@@ -62,7 +62,7 @@ resource "aws_lambda_function" "this" {
   ## Configuration
   # Designer
   function_name = format("%s-function", local.name)
-  layers        = [aws_lambda_layer_version.this[0].arn]
+  layers        = var.layer_enabled ? [aws_lambda_layer_version.this[0].arn] : null
 
   # Function code
   filename         = format("%s/%s-function.zip", var.code_directory, local.name)
