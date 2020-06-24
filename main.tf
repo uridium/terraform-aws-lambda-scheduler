@@ -18,6 +18,20 @@ data "aws_iam_policy_document" "this" {
   }
 }
 
+data "archive_file" "function_zip" {
+  type = "zip"
+  source_dir = format("%s/function", var.code_directory)
+  output_path = format("%s/function.zip", var.code_directory)
+}
+
+data "archive_file" "layer_zip" {
+  count = var.layer_enabled ? 1 : 0
+
+  type = "zip"
+  source_dir = format("%s/layer", var.code_directory)
+  output_path = format("%s/layer.zip", var.code_directory)
+}
+
 resource "aws_iam_role" "this" {
   name               = format("%s-role", local.name)
   assume_role_policy = data.aws_iam_policy_document.this.json
@@ -51,9 +65,9 @@ resource "aws_lambda_permission" "this" {
 resource "aws_lambda_layer_version" "this" {
   count = var.layer_enabled ? 1 : 0
 
-  layer_name          = format("%s-layer", local.name)
-  filename            = format("%s/%s-layer.zip", var.code_directory, local.name)
-  source_code_hash    = filebase64sha256(format("%s/%s-layer.zip", var.code_directory, local.name))
+  layer_name          = local.name
+  filename            = data.archive_file.layer_zip[0].output_path
+  source_code_hash    = data.archive_file.layer_zip[0].output_base64sha256
   description         = var.description
   compatible_runtimes = [var.runtime]
 }
@@ -61,12 +75,12 @@ resource "aws_lambda_layer_version" "this" {
 resource "aws_lambda_function" "this" {
   ## Configuration
   # Designer
-  function_name = format("%s-function", local.name)
+  function_name = local.name
   layers        = var.layer_enabled ? [aws_lambda_layer_version.this[0].arn] : null
 
   # Function code
-  filename         = format("%s/%s-function.zip", var.code_directory, local.name)
-  source_code_hash = filebase64sha256(format("%s/%s-function.zip", var.code_directory, local.name))
+  filename         = data.archive_file.function_zip.output_path
+  source_code_hash = data.archive_file.function_zip.output_base64sha256
 
   # Environment variables
   dynamic "environment" {
