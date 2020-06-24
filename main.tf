@@ -19,16 +19,16 @@ data "aws_iam_policy_document" "this" {
 }
 
 data "archive_file" "function_zip" {
-  type = "zip"
-  source_dir = format("%s/function", var.code_directory)
+  type        = "zip"
+  source_dir  = format("%s/function", var.code_directory)
   output_path = format("%s/function.zip", var.code_directory)
 }
 
 data "archive_file" "layer_zip" {
   count = var.layer_enabled ? 1 : 0
 
-  type = "zip"
-  source_dir = format("%s/layer", var.code_directory)
+  type        = "zip"
+  source_dir  = format("%s/layer", var.code_directory)
   output_path = format("%s/layer.zip", var.code_directory)
 }
 
