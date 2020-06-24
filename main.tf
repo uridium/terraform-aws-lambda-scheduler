@@ -33,7 +33,7 @@ data "archive_file" "layer_zip" {
 }
 
 resource "aws_iam_role" "this" {
-  name               = format("%s-role", local.name)
+  name               = local.name
   assume_role_policy = data.aws_iam_policy_document.this.json
 }
 
@@ -43,7 +43,7 @@ resource "aws_iam_role_policy_attachment" "this" {
 }
 
 resource "aws_cloudwatch_event_rule" "this" {
-  name                = format("%s-scheduler", local.name)
+  name                = local.name
   description         = var.description
   schedule_expression = var.cron
   tags                = var.tags
