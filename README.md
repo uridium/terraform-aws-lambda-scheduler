@@ -4,6 +4,7 @@
 | Name | Version |
 |------|---------|
 | terraform | ~> 0.12.26 |
+| archive | ~> 1.3.0 |
 | aws | ~> 2.67 |
 
 ## Inputs
