@@ -1,0 +1,42 @@
+---
+name: generate-changelog
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    env:
+      filename: "CHANGELOG.md"
+      email: "action@github.com"
+      name: "GitHub Action"
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go variables
+        run: |
+          echo "::set-env name=GOPATH::$(go env GOPATH)"
+          echo "::add-path::$(go env GOPATH)/bin"
+
+      - name: Configure git
+        run: |
+          git config --global user.email ${{ env.email }}
+          git config --global user.name ${{ env.name }}
+
+      - name: Install git-chglog
+        run: |
+          go get github.com/git-chglog/git-chglog/cmd/git-chglog
+
+      - name: Generate changelog
+        run: |
+          git-chglog -o ${{ env.filename }}
+
+      - name: Push changelog to the repository
+        run: |
+          git add ${{ env.filename }}
+          git commit -m "Generate CHANGELOG - $(TZ=Europe/Warsaw date +%Y%m%d_%H%M)"
+          git push
