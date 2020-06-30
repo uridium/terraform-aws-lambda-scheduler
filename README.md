@@ -3,9 +3,9 @@
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12.26 |
+| terraform | ~> 0.12.28 |
 | archive | ~> 1.3.0 |
-| aws | ~> 2.67 |
+| aws | ~> 2.68 |
 
 ## Inputs
 
