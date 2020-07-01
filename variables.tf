@@ -75,3 +75,9 @@ variable "layer_enabled" {
   type        = bool
   default     = false
 }
+
+variable "tracing_mode" {
+  description = "Define X-Ray tracing mode to record timing and error information for a subset of invocations"
+  type        = string
+  default     = "PassThrough"
+}

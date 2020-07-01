@@ -24,6 +24,7 @@
 | subnet\_ids | A list of subnet IDs associated with the Lambda function | `list(string)` | `[]` | no |
 | tags | A map of tags to assign to the object | `map(string)` | `null` | no |
 | timeout | The amount of time your Lambda Function has to run in seconds | `number` | `3` | no |
+| tracing\_mode | Define X-Ray tracing mode to record timing and error information for a subset of invocations | `string` | `"PassThrough"` | no |
 | vars | The Lambda environment's configuration settings | `map(string)` | `null` | no |
 
 ## Outputs

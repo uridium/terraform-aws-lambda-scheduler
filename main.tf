@@ -6,6 +6,7 @@ locals {
   name                = var.function_name
   policy_lambda_vpc   = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
   policy_lambda_basic = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+  policy_xray         = "arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess"
 }
 
 data "aws_iam_policy_document" "this" {
@@ -43,6 +44,13 @@ resource "aws_iam_role" "this" {
 resource "aws_iam_role_policy_attachment" "lambda" {
   role       = aws_iam_role.this.name
   policy_arn = length(var.subnet_ids) > 0 ? local.policy_lambda_vpc : local.policy_lambda_basic
+}
+
+resource "aws_iam_role_policy_attachment" "xray" {
+  count = var.tracing_mode == "Active" ? 1 : 0
+
+  role       = aws_iam_role.this.name
+  policy_arn = local.policy_xray
 }
 
 resource "aws_cloudwatch_event_rule" "this" {
@@ -100,6 +108,11 @@ resource "aws_lambda_function" "this" {
   runtime     = var.runtime
   memory_size = var.memory_size
   timeout     = var.timeout
+
+  # X-Ray
+  tracing_config {
+    mode = var.tracing_mode
+  }
 
   # VPC
   vpc_config {
