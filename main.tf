@@ -109,6 +109,5 @@ resource "aws_lambda_function" "this" {
 
   ## Permissions
   # Execution role
-  role       = aws_iam_role.this.arn
-  depends_on = [aws_iam_role_policy_attachment.this]
+  role = aws_iam_role.this.arn
 }
