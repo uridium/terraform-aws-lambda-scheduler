@@ -3,7 +3,9 @@ provider "aws" {
 }
 
 locals {
-  name = var.function_name
+  name                = var.function_name
+  policy_lambda_vpc   = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+  policy_lambda_basic = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
 data "aws_iam_policy_document" "this" {
@@ -40,7 +42,7 @@ resource "aws_iam_role" "this" {
 
 resource "aws_iam_role_policy_attachment" "this" {
   role       = aws_iam_role.this.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+  policy_arn = length(var.subnet_ids) > 0 ? local.policy_lambda_vpc : local.policy_lambda_basic
 }
 
 resource "aws_cloudwatch_event_rule" "this" {
