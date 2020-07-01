@@ -40,7 +40,7 @@ resource "aws_iam_role" "this" {
   assume_role_policy = data.aws_iam_policy_document.this.json
 }
 
-resource "aws_iam_role_policy_attachment" "this" {
+resource "aws_iam_role_policy_attachment" "lambda" {
   role       = aws_iam_role.this.name
   policy_arn = length(var.subnet_ids) > 0 ? local.policy_lambda_vpc : local.policy_lambda_basic
 }
