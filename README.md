@@ -1,6 +1,6 @@
 # Terraform AWS Lambda module: scheduler/cron
 
-Terraform AWS module wchich creates Lambda resource with attached CloudWatch scheduler.
+Terraform AWS module which creates Lambda resource with attached CloudWatch scheduler.
 
 It integrates Lambda function with CloudWatch cron expression using EventBridge.
 
