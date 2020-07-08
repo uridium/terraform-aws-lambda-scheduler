@@ -4,6 +4,8 @@ All what this example sets up is Lambda function and CloudWatch scheduler. No ot
 
 ## Usage
 
+### Running Terraform
+
 ```bash
 terraform init
 terraform apply
