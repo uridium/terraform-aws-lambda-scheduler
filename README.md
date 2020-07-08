@@ -1,3 +1,46 @@
+# Terraform AWS Lambda module: scheduler/cron
+
+Terraform AWS module wchich creates Lambda resource with attached CloudWatch scheduler.
+
+It integrates Lambda function with CloudWatch cron expression using EventBridge.
+
+## Usage
+
+```hcl
+module "cron" {
+  source = "git@github.com:uridium/terraform-aws-lambda-scheduler.git"
+
+  region = "eu-west-1"
+  function_name = "plower"
+  handler = "lambda.handler"
+  runtime = "python3.8"
+
+  layer_enabled = true
+
+  code_directory = "/opt/lambda"
+
+  vars = {
+    foo = "bar"
+  }
+
+  tags = {
+    Env = "Stage"
+  }
+
+  cron = "cron(01 06 ? * MON-FRI *)"
+}
+```
+
+## Notes
+
+* `code_directory` specifies a directory where you keep your entire Lambda code
+* If you want to create a layer, simply put it into *layer* directory and set `layer_enabled` to `true`
+
+## Examples
+
+* [Basic](examples/basic)
+* [Complete](examples/complete)
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
