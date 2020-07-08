@@ -16,3 +16,5 @@ repos:
           - '--args=--deep'
           - '--args=--module'
       - id: terraform_validate
+
+exclude: examples
