@@ -70,6 +70,12 @@ variable "cron" {
   type        = string
 }
 
+variable "input" {
+  description = "Valid JSON text passed to the target"
+  type        = string
+  default     = null
+}
+
 variable "layer_enabled" {
   description = "Create a Lambda Layer Version resource"
   type        = bool

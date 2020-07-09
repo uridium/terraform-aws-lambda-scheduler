@@ -61,9 +61,9 @@ resource "aws_cloudwatch_event_rule" "this" {
 }
 
 resource "aws_cloudwatch_event_target" "this" {
-  rule = aws_cloudwatch_event_rule.this.name
-  arn  = aws_lambda_function.this.arn
-  # input = TODO
+  rule  = aws_cloudwatch_event_rule.this.name
+  arn   = aws_lambda_function.this.arn
+  input = var.input
 }
 
 resource "aws_lambda_permission" "this" {
