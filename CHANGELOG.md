@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## [v0.4.0] - 2020-07-09
+
+- Pass constant data to the function in json form
+- Update README
+- Add complete example
+- Update basic example README
+- Do not commit zip files
+- Add basic example
+
+
 ## [v0.3.0] - 2020-07-01
 
 - Add X-Ray integration
