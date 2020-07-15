@@ -2,7 +2,7 @@ module "cron" {
   source = "../.."
 
   region        = "eu-west-1"
-  function_name = "complete"
+  function_name = "complete-python"
   handler       = "lambda.handler"
   runtime       = "python3.8"
   memory_size   = 256

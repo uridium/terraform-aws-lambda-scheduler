@@ -12,7 +12,8 @@ This examples sets up a full-fledged Lambda function and CloudWatch scheduler. I
 ### Creating Lambda layer
 
 ```bash
-pip install -r lambda/requirements.txt -t lambda/layer/python
+cd lambda/layer/python
+pip install -r requirements.txt -t .
 ```
 
 ### Running Terraform
