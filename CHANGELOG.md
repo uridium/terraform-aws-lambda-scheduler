@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## [v0.5.0] - 2020-07-16
+
+- Update required_providers
+- Add badges
+- Add complete-nodejs example
+- Use requirements.txt as a gitkeep [ckip ci]
+
+
 ## [v0.4.0] - 2020-07-09
 
 - Pass constant data to the function in json form
