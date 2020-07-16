@@ -36,12 +36,13 @@ module "cron" {
 ## Notes
 
 * `code_directory` specifies a directory where you keep your entire Lambda code
-* If you want to create a layer, simply put it into *layer* directory and set `layer_enabled` to `true`
+* If you want to create a layer, simply put it into *layer/<runtime>* directory and set `layer_enabled` to `true`
 
 ## Examples
 
 * [Basic](examples/basic)
-* [Complete](examples/complete)
+* [Complete with python](examples/complete-python)
+* [Complete with nodejs](examples/complete-nodejs)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
