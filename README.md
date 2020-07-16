@@ -1,5 +1,8 @@
 # Terraform AWS Lambda module: scheduler/cron
 
+[![GitHub Actions](https://github.com/uridium/terraform-aws-lambda-scheduler/workflows/generate-changelog/badge.svg)](https://github.com/uridium/terraform-aws-lambda-scheduler/actions)
+[![Latest tag](https://img.shields.io/github/v/tag/uridium/terraform-aws-lambda-scheduler)](https://registry.terraform.io/modules/uridium/lambda-scheduler/aws)
+
 Terraform AWS module which creates Lambda resource with attached CloudWatch scheduler.
 
 It integrates Lambda function with CloudWatch cron expression using EventBridge.
