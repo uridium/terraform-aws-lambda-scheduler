@@ -16,6 +16,8 @@ resource "aws_s3_bucket" "this" {
   lifecycle {
     prevent_destroy = true
   }
+
+  force_destroy = false
 }
 
 resource "aws_dynamodb_table" "this" {

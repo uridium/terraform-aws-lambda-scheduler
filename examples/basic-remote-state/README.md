@@ -1,7 +1,7 @@
 # Basic Lambda configuration
 
 All what this example sets up is Lambda function and CloudWatch scheduler. No other components are involved.
-Also, this example contains `remote-state` directory which provieds locking mechanism to prevent concurrent runs against the same state. Locking helps make sure that only one team member at a time runs terraform configuration.
+Also, this example contains *remote-state* directory which provieds locking mechanism to prevent concurrent runs against the same state. Locking helps make sure that only one team member at a time runs terraform configuration.
 
 ## Usage
 
@@ -9,7 +9,7 @@ Also, this example contains `remote-state` directory which provieds locking mech
 
 #### Set up remote state
 
-Go to `remote-state` directory:
+Go to *remote-state* directory:
 
 ```bash
 cd remote-state
@@ -25,6 +25,21 @@ Go to the previous directory:
 cd ..
 terraform init
 terraform apply
+```
+
+#### Destroying remote-state resources (if you are absolutely certain what you are doing):
+
+Since S3 bucket is set up to prevent from being destroyed, you need to run a couple of steps first:
+
+1. Go to *remote-state* directory
+2. Change `prevent_destroy` from `true` to `false`
+3. Change `force_destroy` from `false` to `true`
+
+Then:
+
+```bash
+terraform apply
+terraform destroy
 ```
 
 ## Notes
