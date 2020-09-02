@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## [v1.0.1] - 2020-09-02
+
+- Upgrade pre-commit config
+
+
 ## [v1.0.0] - 2020-09-02
 
 - Add remote-state S3 destroying details
