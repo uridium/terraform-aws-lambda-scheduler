@@ -53,9 +53,9 @@ module "cron" {
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12.28 |
+| terraform | ~> 0.13.1 |
 | archive | ~> 1.3.0 |
-| aws | ~> 2.70 |
+| aws | ~> 3.4.0 |
 
 ## Inputs
 
