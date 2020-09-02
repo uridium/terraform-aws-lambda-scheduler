@@ -13,10 +13,10 @@ It integrates Lambda function with CloudWatch cron expression using EventBridge.
 module "cron" {
   source = "git@github.com:uridium/terraform-aws-lambda-scheduler.git"
 
-  region = "eu-west-1"
+  region        = "eu-west-1"
   function_name = "plower"
-  handler = "lambda.handler"
-  runtime = "python3.8"
+  handler       = "lambda.handler"
+  runtime       = "python3.8"
 
   layer_enabled = true
 
@@ -44,6 +44,7 @@ module "cron" {
 ## Examples
 
 * [Basic](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/basic)
+* [Basic with remote state file and locking](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/basic-remote-state)
 * [Complete with python](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/complete-python)
 * [Complete with nodejs](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/complete-nodejs)
 
