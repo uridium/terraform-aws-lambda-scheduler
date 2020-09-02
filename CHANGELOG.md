@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## [v1.0.0] - 2020-09-02
+
+- Add remote-state S3 destroying details
+- Upgrade required versions
+- Add basic-remote-state example
+
+
 ## [v0.5.0] - 2020-07-16
 
 - Update required_providers
