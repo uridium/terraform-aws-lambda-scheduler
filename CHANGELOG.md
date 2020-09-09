@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## [v1.1.0] - 2020-09-09
+
+- Update required versions
+- Add aws_s3_bucket encryption
+- Update pre-commit-terraform version
+- Prevent aws_dynamodb_table from being destroyed
+- Upgrade pre-commit config
+
+
 ## [v1.0.1] - 2020-09-02
 
 - Upgrade pre-commit config
