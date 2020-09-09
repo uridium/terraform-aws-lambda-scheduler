@@ -13,11 +13,11 @@ resource "aws_s3_bucket" "this" {
     enabled = true
   }
 
+  force_destroy = false
+
   lifecycle {
     prevent_destroy = true
   }
-
-  force_destroy = false
 }
 
 resource "aws_dynamodb_table" "this" {
@@ -29,5 +29,9 @@ resource "aws_dynamodb_table" "this" {
   attribute {
     name = "LockID"
     type = "S"
+  }
+
+  lifecycle {
+    prevent_destroy = true
   }
 }
