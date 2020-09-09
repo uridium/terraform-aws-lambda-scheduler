@@ -36,6 +36,19 @@ module "cron" {
 }
 ```
 
+### Development
+
+This module uses [pre-commit](https://pre-commit.com/) hook to identify simple issues before pushing code to the remote repository, and relies on *.pre-commit-config.yaml* file.
+
+To use it simply run:
+
+```bash
+pip install pre-commit
+pre-commit install
+```
+
+Now `pre-commit` will run automatically on every `git commit`.
+
 ## Notes
 
 * `code_directory` specifies a directory where you keep your entire Lambda code
