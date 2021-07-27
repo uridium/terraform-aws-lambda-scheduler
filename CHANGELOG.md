@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## [v1.2.1] - 2021-07-27
+
+- Remove deprecated GitHub Actions commands
+
+
+## [v1.2.0] - 2021-07-27
+
+- Use terraform >= 1.0
+- Update pre-commit-terraform version
+
+
 ## [v1.1.0] - 2020-09-09
 
 - Update required versions
