@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     bucket = "terraform-remote-state-lambda-scheduler"
     key = "terraform.tfstate"
-    region = "eu-west-1"
+    region = "us-east-1"
     encrypt = true
     dynamodb_table = "terraform-remote-state-lambda-scheduler"
   }
@@ -11,7 +11,7 @@ terraform {
 module "cron" {
   source = "../.."
 
-  region        = "eu-west-1"
+  region        = "us-east-1"
   function_name = "basic"
   handler       = "lambda.handler"
   runtime       = "python3.8"
