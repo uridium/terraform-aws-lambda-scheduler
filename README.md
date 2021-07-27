@@ -13,7 +13,7 @@ It integrates Lambda function with CloudWatch cron expression using EventBridge.
 module "cron" {
   source = "git@github.com:uridium/terraform-aws-lambda-scheduler.git"
 
-  region        = "eu-west-1"
+  region        = "us-east-1"
   function_name = "plower"
   handler       = "lambda.handler"
   runtime       = "python3.8"
