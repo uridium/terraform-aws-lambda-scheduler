@@ -4,7 +4,7 @@ module "cron" {
   region        = "us-east-1"
   function_name = "complete-nodejs"
   handler       = "lambda.handler"
-  runtime       = "nodejs12.x"
+  runtime       = "nodejs14.x"
   memory_size   = 256
   timeout       = 10
 
