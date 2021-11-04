@@ -1,7 +1,7 @@
 module "cron" {
   source = "../.."
 
-  region        = "eu-west-1"
+  region        = "us-east-1"
   function_name = "complete-python"
   handler       = "lambda.handler"
   runtime       = "python3.8"
@@ -22,9 +22,6 @@ module "cron" {
     Env       = "Stage"
     Provision = "False"
   }
-
-  subnet_ids         = ["subnet-xxxxxxxx", "subnet-xxxxxxxx"]
-  security_group_ids = ["sg-xxxxxxxx"]
 
   cron = "cron(01 06 ? * MON-FRI *)"
 }
