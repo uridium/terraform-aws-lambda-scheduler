@@ -77,11 +77,12 @@ resource "aws_lambda_permission" "this" {
 resource "aws_lambda_layer_version" "this" {
   count = var.layer_enabled ? 1 : 0
 
-  layer_name          = local.name
-  filename            = data.archive_file.layer_zip[0].output_path
-  source_code_hash    = data.archive_file.layer_zip[0].output_base64sha256
-  description         = var.description
-  compatible_runtimes = [var.runtime]
+  layer_name               = local.name
+  filename                 = data.archive_file.layer_zip[0].output_path
+  source_code_hash         = data.archive_file.layer_zip[0].output_base64sha256
+  description              = var.description
+  compatible_runtimes      = [var.runtime]
+  compatible_architectures = ["x86_64"]
 }
 
 resource "aws_lambda_function" "this" {
