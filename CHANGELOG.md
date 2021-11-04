@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## [v1.2.2] - 2021-11-04
+
+- Add compatible_architectures
+- Add tags to IAM role
+- Update aws provider version
+- Update examples
+
+
 ## [v1.2.1] - 2021-07-27
 
 - Remove deprecated GitHub Actions commands
