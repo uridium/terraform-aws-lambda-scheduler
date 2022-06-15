@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## [v1.3.0] - 2022-06-15
+
+- Do not generate providers and modules
+- Update examples
+- Remove region variable
+- Do not define compatible_architectures
+- Require terraform 1.2
+- Update pre-commit
+
+
 ## [v1.2.2] - 2021-11-04
 
 - Add compatible_architectures
