@@ -1,8 +1,3 @@
-variable "region" {
-  description = "This is the AWS region"
-  type        = string
-}
-
 variable "function_name" {
   description = "A unique name for your Lambda Function"
   type        = string

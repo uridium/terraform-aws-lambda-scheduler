@@ -1,7 +1,6 @@
 module "cron" {
   source = "../.."
 
-  region        = "us-east-1"
   function_name = "complete-nodejs"
   handler       = "lambda.handler"
   runtime       = "nodejs14.x"

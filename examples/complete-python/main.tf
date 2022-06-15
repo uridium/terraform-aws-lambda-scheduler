@@ -1,7 +1,6 @@
 module "cron" {
   source = "../.."
 
-  region        = "us-east-1"
   function_name = "complete-python"
   handler       = "lambda.handler"
   runtime       = "python3.8"

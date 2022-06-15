@@ -13,7 +13,6 @@ It integrates Lambda function with CloudWatch cron expression using EventBridge.
 module "cron" {
   source = "git@github.com:uridium/terraform-aws-lambda-scheduler.git"
 
-  region        = "us-east-1"
   function_name = "plower"
   handler       = "lambda.handler"
   runtime       = "python3.8"
@@ -109,7 +108,6 @@ No modules.
 | <a name="input_input"></a> [input](#input\_input) | Valid JSON text passed to the target | `string` | `null` | no |
 | <a name="input_layer_enabled"></a> [layer\_enabled](#input\_layer\_enabled) | Create a Lambda Layer Version resource | `bool` | `false` | no |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | The amount of memory in MB your Lambda Function can use at runtime | `number` | `128` | no |
-| <a name="input_region"></a> [region](#input\_region) | This is the AWS region | `string` | n/a | yes |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | The identifier of the function's runtime | `string` | n/a | yes |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | A list of security group IDs associated with the Lambda function | `list(string)` | `[]` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | A list of subnet IDs associated with the Lambda function | `list(string)` | `[]` | no |
