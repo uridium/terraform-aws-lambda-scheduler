@@ -3,7 +3,7 @@ module "cron" {
 
   function_name = "complete-nodejs"
   handler       = "lambda.handler"
-  runtime       = "nodejs14.x"
+  runtime       = "nodejs16.x"
   memory_size   = 256
   timeout       = 10
 

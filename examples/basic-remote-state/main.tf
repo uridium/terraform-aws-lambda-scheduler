@@ -13,7 +13,7 @@ module "cron" {
 
   function_name = "basic"
   handler       = "lambda.handler"
-  runtime       = "python3.8"
+  runtime       = "python3.9"
 
   code_directory = "./lambda"
 

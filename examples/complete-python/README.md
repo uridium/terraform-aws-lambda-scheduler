@@ -13,6 +13,15 @@ This examples sets up a full-fledged Lambda function and CloudWatch scheduler. I
 ```bash
 cd lambda/layer/python
 pip install -r requirements.txt -t .
+cd -
+```
+
+### Exporting variables
+
+```bash
+export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+export AWS_DEFAULT_REGION=us-east-1
 ```
 
 ### Running Terraform

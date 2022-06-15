@@ -15,7 +15,7 @@ module "cron" {
 
   function_name = "plower"
   handler       = "lambda.handler"
-  runtime       = "python3.8"
+  runtime       = "python3.9"
 
   layer_enabled = true
 

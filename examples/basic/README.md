@@ -4,6 +4,14 @@ All what this example sets up is Lambda function and CloudWatch scheduler. No ot
 
 ## Usage
 
+### Exporting variables
+
+```bash
+export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+export AWS_DEFAULT_REGION=us-east-1
+```
+
 ### Running Terraform
 
 ```bash

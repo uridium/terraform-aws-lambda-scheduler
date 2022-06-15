@@ -3,7 +3,7 @@ module "cron" {
 
   function_name = "complete-python"
   handler       = "lambda.handler"
-  runtime       = "python3.8"
+  runtime       = "python3.9"
   memory_size   = 256
   timeout       = 10
 
