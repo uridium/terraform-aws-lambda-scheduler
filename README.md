@@ -7,6 +7,8 @@ Terraform AWS module which creates Lambda resource with attached CloudWatch sche
 
 It integrates Lambda function with CloudWatch cron expression using EventBridge.
 
+Simply put, thanks to this module, you can schedule your code to run at a specific time.
+
 ## Usage
 
 ```hcl

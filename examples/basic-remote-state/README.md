@@ -31,7 +31,7 @@ Keep in mind that those commands create local *remote-state/terraform.tfstate* f
 Go to the previous directory:
 
 ```bash
-cd ..
+cd -
 terraform init
 terraform apply
 ```
