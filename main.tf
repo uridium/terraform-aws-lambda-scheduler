@@ -35,7 +35,8 @@ resource "aws_iam_role" "this" {
   name               = local.name
   description        = var.description
   assume_role_policy = data.aws_iam_policy_document.this.json
-  tags               = var.tags
+
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "lambda" {
@@ -54,13 +55,21 @@ resource "aws_cloudwatch_event_rule" "this" {
   name                = local.name
   description         = var.description
   schedule_expression = var.cron
-  tags                = var.tags
+
+  tags = var.tags
 }
 
 resource "aws_cloudwatch_event_target" "this" {
   rule  = aws_cloudwatch_event_rule.this.name
   arn   = aws_lambda_function.this.arn
   input = var.input
+}
+
+resource "aws_cloudwatch_log_group" "this" {
+  name              = "/aws/lambda/${local.name}"
+  retention_in_days = 1
+
+  tags = var.tags
 }
 
 resource "aws_lambda_permission" "this" {
@@ -93,7 +102,9 @@ resource "aws_lambda_function" "this" {
   # Environment variables
   dynamic "environment" {
     for_each = var.vars[*]
-    content { variables = environment.value }
+    content {
+      variables = environment.value
+    }
   }
 
   # Tags
