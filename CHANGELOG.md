@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## [v1.3.1] - 2022-06-19
+
+- Create CloudWatch group
+- Remove deprecated s3 parameters
+
+
 ## [v1.3.0] - 2022-06-15
 
 - Do not generate providers and modules
