@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## [v1.3.2] - 2022-06-19
+
+- Update README
+- Create CloudWatch group
+- Remove deprecated s3 parameters
+
+
 ## [v1.3.1] - 2022-06-19
 
 - Create CloudWatch group
