@@ -24,7 +24,7 @@ cd remote-state
 terraform init
 terraform apply
 ```
-Keep in mind that those commands create local *remote-state/terraform.tfstate* file. If you need to share it with other team members (I guess you do) don't forget to commit it to the repository.
+Keep in mind that those commands create local *remote-state/terraform.tfstate* file. If you need to share it with other team members (I guess you do) consider adding it to the repository.
 
 #### Set up Lambda resources
 
