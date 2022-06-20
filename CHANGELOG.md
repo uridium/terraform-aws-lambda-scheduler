@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## [v1.3.3] - 2022-06-20
+
+- Do not keep local statefile
+
+
 ## [v1.3.2] - 2022-06-19
 
 - Update README
