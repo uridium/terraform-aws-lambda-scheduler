@@ -30,7 +30,7 @@ jobs:
 
       - name: Install git-chglog
         run: |
-          go get github.com/git-chglog/git-chglog/cmd/git-chglog
+          go install github.com/git-chglog/git-chglog/cmd/git-chglog@latest
 
       - name: Generate changelog
         run: |
