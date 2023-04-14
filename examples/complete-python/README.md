@@ -3,6 +3,7 @@
 This examples sets up a full-fledged Lambda function and CloudWatch scheduler. It also includes:
 
 * Lambda layer
+* VPC, subnets, security group, NAT gateway
 * X-Ray
 * tags and variables
 
