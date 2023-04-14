@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## [v1.3.4] - 2023-04-14
+
+- Create a sample VPC for complete-python lambda function
+- Create a sample VPC for complete-nodejs lambda function
+
+
 ## [v1.3.3] - 2022-06-20
 
 - Do not keep local statefile
