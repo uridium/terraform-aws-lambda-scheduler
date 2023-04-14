@@ -12,3 +12,7 @@ output "function_runtime" {
   description = "Runtime of the lambda function"
   value       = module.cron.lambda_function_runtime
 }
+
+output "function_vpc_id" {
+  value = module.vpc.vpc_id
+}
