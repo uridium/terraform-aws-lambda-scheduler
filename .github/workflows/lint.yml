@@ -1,0 +1,29 @@
+---
+name: Lint
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Prepare the working directory for other commands
+        run: |
+          terraform init
+
+      - name: Check whether the configuration is valid
+        run: |
+          terraform validate
+
+      - name: Check whether the configuration is in the standard style
+        run: |
+          terraform fmt -check -diff -recursive

@@ -1,12 +1,13 @@
 ---
-name: generate-changelog
+name: Release
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - '*'
+  pull_request:
+    types:
+      - closed
+
 jobs:
-  generate:
+  release:
     runs-on: ubuntu-latest
     env:
       filename: "CHANGELOG.md"
@@ -14,7 +15,7 @@ jobs:
       name: "GitHub Action"
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: master
           fetch-depth: 0
