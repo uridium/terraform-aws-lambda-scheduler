@@ -1,6 +1,7 @@
 # Terraform AWS Lambda module: scheduler/cron
 
-[![GitHub Actions](https://github.com/uridium/terraform-aws-lambda-scheduler/workflows/generate-changelog/badge.svg)](https://github.com/uridium/terraform-aws-lambda-scheduler/actions)
+[![GitHub Actions](https://github.com/uridium/terraform-aws-lambda-scheduler/workflows/Lint/badge.svg)](https://github.com/uridium/terraform-aws-lambda-scheduler/actions/workflows/lint.yml)
+[![GitHub Actions](https://github.com/uridium/terraform-aws-lambda-scheduler/workflows/Release/badge.svg)](https://github.com/uridium/terraform-aws-lambda-scheduler/actions/workflows/release.yml)
 [![Latest tag](https://img.shields.io/github/v/tag/uridium/terraform-aws-lambda-scheduler)](https://registry.terraform.io/modules/uridium/lambda-scheduler/aws)
 
 Terraform AWS module which creates Lambda resource with attached CloudWatch scheduler.
@@ -15,15 +16,12 @@ Simply put, thanks to this module, you can schedule your code to run at a specif
 module "cron" {
   source = "git@github.com:uridium/terraform-aws-lambda-scheduler.git"
 
-  function_name = "plower"
-  handler       = "lambda.handler"
-  runtime       = "python3.9"
-
-  layer_enabled = true
-
+  function_name  = "plower"
+  handler        = "lambda.handler"
+  runtime        = "python3.9"
+  layer_enabled  = true
   code_directory = "/opt/lambda"
-
-  input = "{\"firstName\": \"John\", \"lastName\": \"Doe\"}"
+  input          = "{\"firstName\": \"John\", \"lastName\": \"Doe\"}"
 
   vars = {
     foo = "bar"
@@ -57,10 +55,10 @@ Now `pre-commit` will run automatically on every `git commit`.
 
 ## Examples
 
-* [Basic](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/basic)
-* [Basic with remote state file and locking](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/basic-remote-state)
-* [Complete with python](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/complete-python)
-* [Complete with nodejs](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/complete-nodejs)
+* [Displays Hello World with Python, no VPC](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/no_vpc_no_layer_python)
+* [Displays Hello World with Python, no VPC, uses remote state file and locking](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/no_vpc_no_layer_python_remote_state)
+* [Displays HTTP headers with Nodejs, VPC](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/vpc_layer_nodejs)
+* [Displays HTTP headers with Python, VPC](https://github.com/uridium/terraform-aws-lambda-scheduler/tree/master/examples/vpc_layer_python)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

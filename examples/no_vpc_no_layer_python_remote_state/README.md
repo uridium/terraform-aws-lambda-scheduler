@@ -1,4 +1,4 @@
-# Basic Lambda configuration
+# Simple Lambda configuration with remote state
 
 All what this example sets up is Lambda function and CloudWatch scheduler. No other components are involved.
 Also, this example contains *remote-state* directory which provieds locking mechanism to prevent concurrent runs against the same state. Locking helps make sure that only one team member at a time runs terraform configuration.

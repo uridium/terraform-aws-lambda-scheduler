@@ -1,4 +1,4 @@
-# Complete Lambda configuration
+# Full Lambda Python configuration in VPC
 
 This examples sets up a full-fledged Lambda function and CloudWatch scheduler. It also includes:
 
