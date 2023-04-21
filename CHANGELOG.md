@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## [v1.3.5] - 2023-04-21
+
+- Rename examples
+- Enable a workflow to be triggered manually
+- Fix 'go get is no longer supported' error
+
+
 ## [v1.3.4] - 2023-04-14
 
 - Create a sample VPC for complete-python lambda function
