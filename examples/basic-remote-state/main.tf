@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "terraform-remote-state-lambda-scheduler"
-    key = "terraform.tfstate"
-    encrypt = true
+    bucket         = "terraform-remote-state-lambda-scheduler"
+    key            = "terraform.tfstate"
+    encrypt        = true
     dynamodb_table = "terraform-remote-state-lambda-scheduler"
   }
 }
