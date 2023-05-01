@@ -1,6 +1,6 @@
 # Simple Lambda configuration
 
-All what this example sets up is Lambda function and CloudWatch scheduler. No other components are involved.
+All what this example sets up is a containerized Lambda function and CloudWatch scheduler. No other components are involved.
 
 ## Usage
 
@@ -21,16 +21,13 @@ terraform apply
 
 ## Notes
 
-Given the attached example, your `code_directory` structure should look like this:
+ECR credentials are set up using _docker_ provider and _aws_ecr_authorization_token_ data source.
+
+If you need to authenticate your local CLI environment, you can run:
 
 ```bash
-lambda
-└── [drwxrwxr-x]  function
-    └── [-rwxr-xr-x]  lambda.py
-```
+region=$(aws configure get region)
+aws_account_id=$(aws sts get-caller-identity --query Account --output text)
 
-where file name (*lambda.py*) is `handler` prefix, and function name (*def handler()*) is `handler` suffix:
-
-```hcl
-handler = "lambda.handler"
+aws ecr get-login-password --region ${region} | docker login -u AWS --password-stdin ${aws_account_id}.dkr.ecr.${region}.amazonaws.com
 ```
