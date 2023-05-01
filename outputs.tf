@@ -18,11 +18,6 @@ output "lambda_function_filename" {
   value       = aws_lambda_function.this.filename
 }
 
-output "lambda_layer_filename" {
-  description = "The filename of the layer zip archive"
-  value       = aws_lambda_layer_version.this.*.filename
-}
-
 output "lambda_function_handler" {
   description = "The filename.handler-method value in your function"
   value       = aws_lambda_function.this.handler
@@ -56,4 +51,9 @@ output "lambda_function_source_code_hash" {
 output "lambda_function_vpc_config" {
   description = "A list of subnets and security groups associated tiwht the Lambda Function"
   value       = aws_lambda_function.this.vpc_config
+}
+
+output "lambda_function_image_uri" {
+  description = "A list of subnets and security groups associated tiwht the Lambda Function"
+  value       = aws_lambda_function.this.image_uri
 }

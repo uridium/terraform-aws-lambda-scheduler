@@ -6,6 +6,7 @@ variable "function_name" {
 variable "code_directory" {
   description = "A relative or full path to the directory with your Lambda Function (and Layer if you use it) code. For example: /opt/lambda"
   type        = string
+  default     = null
 }
 
 variable "description" {
@@ -17,11 +18,13 @@ variable "description" {
 variable "handler" {
   description = "The function entrypoint in your code"
   type        = string
+  default     = null
 }
 
 variable "runtime" {
   description = "The identifier of the function's runtime"
   type        = string
+  default     = null
 }
 
 variable "memory_size" {
@@ -81,4 +84,16 @@ variable "tracing_mode" {
   description = "Define X-Ray tracing mode to record timing and error information for a subset of invocations"
   type        = string
   default     = "PassThrough"
+}
+
+variable "package_type" {
+  description = "Lambda deployment package type"
+  type        = string
+  default     = "Zip"
+}
+
+variable "image_uri" {
+  description = "ECR image URI containing the function's deployment package"
+  type        = string
+  default     = false
 }
