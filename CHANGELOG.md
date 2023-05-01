@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## [v1.4.0] - 2023-05-01
+
+- Remove lambda_layer_filename output
+- Update README
+- Add container support
+- Merge pull request [#1](https://github.com/uridium/terraform-aws-lambda-scheduler/issues/1) from uridium/release_1_3_5
+
+
 ## [v1.3.5] - 2023-04-21
 
 - Rename examples
