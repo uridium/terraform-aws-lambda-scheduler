@@ -57,3 +57,8 @@ output "lambda_function_vpc_config" {
   description = "A list of subnets and security groups associated tiwht the Lambda Function"
   value       = aws_lambda_function.this.vpc_config
 }
+
+output "lambda_function_image_uri" {
+  description = "A list of subnets and security groups associated tiwht the Lambda Function"
+  value       = aws_lambda_function.this.image_uri
+}

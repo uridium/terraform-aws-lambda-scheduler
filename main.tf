@@ -1,5 +1,4 @@
 locals {
-  name                = var.function_name
   policy_lambda_vpc   = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
   policy_lambda_basic = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
   policy_xray         = "arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess"
@@ -18,6 +17,8 @@ data "aws_iam_policy_document" "this" {
 }
 
 data "archive_file" "function_zip" {
+  count = var.package_type == "Zip" ? 1 : 0
+
   type        = "zip"
   source_dir  = format("%s/function", var.code_directory)
   output_path = format("%s/function.zip", var.code_directory)
@@ -32,7 +33,7 @@ data "archive_file" "layer_zip" {
 }
 
 resource "aws_iam_role" "this" {
-  name               = local.name
+  name               = var.function_name
   description        = var.description
   assume_role_policy = data.aws_iam_policy_document.this.json
 
@@ -52,7 +53,7 @@ resource "aws_iam_role_policy_attachment" "xray" {
 }
 
 resource "aws_cloudwatch_event_rule" "this" {
-  name                = local.name
+  name                = var.function_name
   description         = var.description
   schedule_expression = var.cron
 
@@ -66,7 +67,7 @@ resource "aws_cloudwatch_event_target" "this" {
 }
 
 resource "aws_cloudwatch_log_group" "this" {
-  name              = "/aws/lambda/${local.name}"
+  name              = "/aws/lambda/${var.function_name}"
   retention_in_days = 1
 
   tags = var.tags
@@ -82,7 +83,7 @@ resource "aws_lambda_permission" "this" {
 resource "aws_lambda_layer_version" "this" {
   count = var.layer_enabled ? 1 : 0
 
-  layer_name          = local.name
+  layer_name          = var.function_name
   filename            = data.archive_file.layer_zip[0].output_path
   source_code_hash    = data.archive_file.layer_zip[0].output_base64sha256
   description         = var.description
@@ -90,16 +91,20 @@ resource "aws_lambda_layer_version" "this" {
 }
 
 resource "aws_lambda_function" "this" {
-  ## Configuration
-  # Designer
-  function_name = local.name
-  layers        = var.layer_enabled ? [aws_lambda_layer_version.this[0].arn] : null
+  function_name    = var.function_name
+  package_type     = var.package_type
+  image_uri        = var.package_type == "Image" ? var.image_uri : null
+  filename         = var.package_type == "Zip" ? data.archive_file.function_zip[0].output_path : null
+  source_code_hash = var.package_type == "Zip" ? data.archive_file.function_zip[0].output_base64sha256 : null
+  layers           = var.layer_enabled ? [aws_lambda_layer_version.this[0].arn] : null
+  description      = var.description
+  handler          = var.handler
+  runtime          = var.runtime
+  memory_size      = var.memory_size
+  timeout          = var.timeout
+  role             = aws_iam_role.this.arn
+  tags             = var.tags
 
-  # Function code
-  filename         = data.archive_file.function_zip.output_path
-  source_code_hash = data.archive_file.function_zip.output_base64sha256
-
-  # Environment variables
   dynamic "environment" {
     for_each = var.vars[*]
     content {
@@ -107,28 +112,12 @@ resource "aws_lambda_function" "this" {
     }
   }
 
-  # Tags
-  tags = var.tags
-
-  # Basic settings
-  description = var.description
-  handler     = var.handler
-  runtime     = var.runtime
-  memory_size = var.memory_size
-  timeout     = var.timeout
-
-  # X-Ray
   tracing_config {
     mode = var.tracing_mode
   }
 
-  # VPC
   vpc_config {
     subnet_ids         = var.subnet_ids
     security_group_ids = var.security_group_ids
   }
-
-  ## Permissions
-  # Execution role
-  role = aws_iam_role.this.arn
 }
