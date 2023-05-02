@@ -1,33 +1,16 @@
 # CHANGELOG
-
 {{ range .Versions }}
-## {{ if .Tag.Previous }}[{{ .Tag.Name }}]{{ else }}{{ .Tag.Name }}{{ end }} - {{ datetime "2006-01-02" .Tag.Date }}
-{{ if .CommitGroups -}}
-{{ range .CommitGroups -}}
-### {{ .Title }}
+<a name="{{ .Tag.Name }}"></a>
+## {{ if .Tag.Previous }}[{{ .Tag.Name }}]({{ $.Info.RepositoryURL }}/compare/{{ .Tag.Previous.Name }}...{{ .Tag.Name }}){{ else }}{{ .Tag.Name }}{{ end }} ({{ datetime "2006-01-02" .Tag.Date }})
 {{ range .Commits -}}
-{{/* SKIPPING RULES - START */ -}}
-{{- if not (contains .Subject "[ci skip]") -}}
-{{- if not (contains .Subject "[skip ci]") -}}
-{{- /* SKIPPING RULES - END */ -}}
-- {{ .Subject }}
-{{/* SKIPPING RULES - START */ -}}
+{{- if not (hasPrefix .Subject "Merge pull") -}}
+{{- if not (contains .Subject "README") -}}
+{{- if not (hasSuffix .Subject "[ci skip]") -}}
+{{- if not (hasSuffix .Subject "[skip ci]") -}}
+* {{ .Subject }}
 {{ end -}}
 {{ end -}}
-{{/* SKIPPING RULES - END */ -}}
-{{ end }}
-{{ end -}}
-{{ else }}
-{{ range .Commits -}}
-{{/* SKIPPING RULES - START */ -}}
-{{- if not (contains .Subject "[ci skip]") -}}
-{{- if not (contains .Subject "[skip ci]") -}}
-{{- /* SKIPPING RULES - END */ -}}
-- {{ .Subject }}
-{{/* SKIPPING RULES - START */ -}}
 {{ end -}}
 {{ end -}}
-{{/* SKIPPING RULES - END */ -}}
-{{ end }}
 {{ end -}}
 {{ end -}}
